@@ -53,7 +53,7 @@ public class PlayerFSM : MonoBehaviour
 
         if (currentState == newState && !force) return;
 
-        currentState?.Exit();
+        currentState?.Exit(context);
         currentState = newState;
         CurrentStateID = newStateID;
         currentState.Enter(context);

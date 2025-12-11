@@ -4,24 +4,10 @@
 /// </summary>
 public class StateContext
 {
-    public Transform AgentTransform { get; private set; }
-    public Transform TargetTransform { get; private set; }
-    public float DeltaTime { get; private set; }
+    public Agent Agent;
 
-    public StateContext(Transform agent, Transform target, float deltaTime)
+    public StateContext(Agent agent)
     {
-        AgentTransform = agent;
-        TargetTransform = target;
-        DeltaTime = deltaTime;
+        Agent = agent;
     }
-
-    /// <summary>
-    /// Updates deltaTime each frame.
-    /// </summary>
-    public void UpdateDeltaTime(float deltaTime)
-    {
-        DeltaTime = deltaTime;
-    }
-
-    // Add more runtime data as needed (speed, health, etc.)
 }

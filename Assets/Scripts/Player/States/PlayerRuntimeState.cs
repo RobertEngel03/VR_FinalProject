@@ -32,7 +32,7 @@ public abstract class PlayerRuntimeState : StateBase
         // Default: can be overridden
     }
 
-    public override void Exit()
+    public override void Exit(StateContext? context)
     {
         // Default: can be overridden
     }

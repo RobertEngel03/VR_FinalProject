@@ -17,5 +17,5 @@ public abstract class EnemyStateSO : StateSO
     /// </summary>
     public abstract EnemyStateID StateID { get; }
 
-    public abstract EnemyRuntimeState CreateRuntime();
+    public abstract EnemyRuntimeState CreateRuntime(EnemyFSM stateMachine);
 }

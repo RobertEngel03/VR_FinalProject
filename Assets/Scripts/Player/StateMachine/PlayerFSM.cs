@@ -3,44 +3,46 @@ using UnityEngine;
 
 public class PlayerFSM : MonoBehaviour
 {
-    [Header("Agent Config")]
-    [SerializeField] private PlayerStateMachineConfig agentConfig;
+    public PlayerAgent agent { get; private set; }
+    public PlayerStateMachineConfig _agentConfig => agent != null ? agent.AgentConfig : null;
+    public StateContext Context => agent != null ? agent.Context : null;
 
     private Dictionary<PlayerStateID, PlayerRuntimeState> runtimeStates = new();
     private PlayerRuntimeState currentState;
     private StateContext context;
     public PlayerStateID CurrentStateID { get; private set; }
 
-    public void Initialize(StateContext initContext)
+    public void Initialize(PlayerAgent agent)
     {
-        context = initContext;
+        this.agent = agent;
+
         runtimeStates.Clear();
 
-        if (agentConfig == null)
+        if (_agentConfig == null)
         {
             Debug.LogError($"{name} FSM has no AgentConfig assigned!");
             return;
         }
 
-        foreach (var mapping in agentConfig.stateMappings)
+        foreach (var mapping in _agentConfig.stateMappings)
         {
             if (mapping.stateSO == null)
             {
-                Debug.LogWarning($"AgentConfig {agentConfig.name} has null StateSO for {mapping.stateID}");
+                Debug.LogWarning($"AgentConfig {_agentConfig.name} has null StateSO for {mapping.stateID}");
                 continue;
             }
 
-            var runtimeState = mapping.stateSO.CreateRuntime();
+            var runtimeState = mapping.stateSO.CreateRuntime(this);
             runtimeStates[mapping.stateID] = runtimeState;
         }
 
-        if (!runtimeStates.TryGetValue(agentConfig.defaultState, out var defaultState))
+        if (!runtimeStates.TryGetValue(_agentConfig.defaultState, out var defaultState))
         {
-            Debug.LogError($"Default state {agentConfig.defaultState} not found!");
+            Debug.LogError($"Default state {_agentConfig.defaultState} not found!");
             return;
         }
 
-        ChangeState(agentConfig.defaultState, context, true);
+        ChangeState(_agentConfig.defaultState, Context, true);
     }
 
     public void ChangeState(PlayerStateID newStateID, StateContext context, bool force = false)

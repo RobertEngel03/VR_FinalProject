@@ -8,7 +8,7 @@ public class EnemyChaseStateSO : EnemyStateSO
 
     public override Type RuntimeType => typeof(EnemyChaseState);
 
-    public float ChaseDistance;
+    public float BreakingDistance;
 
     public override EnemyRuntimeState CreateRuntime(EnemyFSM stateMachine)
     {

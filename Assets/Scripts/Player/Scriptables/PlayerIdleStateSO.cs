@@ -10,8 +10,8 @@ public class PlayerIdleStateSO : PlayerStateSO
 
     public float MinDuration, MaxDuration;
 
-    public override PlayerRuntimeState CreateRuntime()
+    public override PlayerRuntimeState CreateRuntime(PlayerFSM stateMachine)
     {
-        return new PlayerIdleState(this);
+        return new PlayerIdleState(this, stateMachine);
     }
 }

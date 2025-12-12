@@ -16,5 +16,5 @@ public abstract class PlayerStateSO : StateSO
     /// </summary>
     public abstract PlayerStateID StateID { get; }
 
-    public abstract PlayerRuntimeState CreateRuntime();
+    public abstract PlayerRuntimeState CreateRuntime(PlayerFSM stateMachine);
 }

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -13,9 +12,6 @@ public class TargetDetector : MonoBehaviour
 
     [Tooltip("Maximum distance to check for targets.")]
     public float detectionRange = 5f;
-
-    [Tooltip("Radius of the detection sphere. Set to 0 for ray-only detection.")]
-    public float detectionRadius = 0.5f;
 
     public float attackRadius = 1f;
 
@@ -44,29 +40,13 @@ public class TargetDetector : MonoBehaviour
     {
         Collider[] hits;
 
-        if (detectionRadius > 0f)
-        {
-            hits = Physics.OverlapSphere(transform.position, detectionRange, targetLayers, QueryTriggerInteraction.Collide);
-        }
-        else
-        {
-            // Ray-only detection
-            Ray ray = new Ray(transform.position, transform.forward);
-            if (Physics.Raycast(ray, out RaycastHit hit, detectionRange, targetLayers))
-            {
-                currentTarget = hit.transform;
-                return;
-            }
-
-            currentTarget = null;
-            return;
-        }
+        hits = Physics.OverlapSphere(transform.position, detectionRange, targetLayers, QueryTriggerInteraction.Collide);
 
         // Find closest collider
         float bestDist = Mathf.Infinity;
         Transform best = null;
 
-        bool canAttack = false;
+        bool inRange = false;
 
         foreach (var hit in hits)
         {
@@ -77,21 +57,18 @@ public class TargetDetector : MonoBehaviour
                 best = hit.transform;
             }
 
-            canAttack = dist <= attackRadius;
+            inRange = dist <= attackRadius;
         }
 
         currentTarget = best;
 
-        if (currentTarget != null) EventBus.Instance.Publish(new TargetDetectedEvent(_agent, currentTarget, canAttack));
+        if (currentTarget != null) EventBus.Instance.Publish(new TargetDetectedEvent(_agent, currentTarget, inRange));
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
-        if (detectionRadius > 0f)
-            Gizmos.DrawWireSphere(transform.position, detectionRange);
-        else
-            Gizmos.DrawLine(transform.position, transform.position + transform.forward * detectionRange);
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
 
 #if UNITY_EDITOR
         if (currentTarget != null)

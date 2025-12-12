@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ChaseState
   m_EditorClassIdentifier: 
   OverrideAnimationClip: {fileID: 0}
-  ChaseDistance: 5
+  BreakingDistance: 1.7

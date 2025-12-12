@@ -5,10 +5,12 @@
 /// <typeparam name="TSO">Type of the ScriptableObject</typeparam>
 public abstract class PlayerRuntimeState : StateBase 
 {
+    protected readonly PlayerFSM stateMachine;
     protected readonly PlayerStateSO stateSO;
 
-    protected PlayerRuntimeState(PlayerStateSO stateSO)
+    protected PlayerRuntimeState(PlayerStateSO stateSO, PlayerFSM stateMachine)
     {
+        this.stateMachine = stateMachine;
         this.stateSO = stateSO;
     }
 
@@ -36,4 +38,7 @@ public abstract class PlayerRuntimeState : StateBase
     {
         // Default: can be overridden
     }
+
+    protected void ChangeState(PlayerStateID stateID, StateContext context, bool force = false)
+        => stateMachine.ChangeState(stateID, context, force);
 }

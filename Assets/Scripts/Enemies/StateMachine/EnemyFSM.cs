@@ -7,6 +7,9 @@ public class EnemyFSM : MonoBehaviour
     public EnemyStateMachineConfig _agentConfig => agent != null ? agent.AgentConfig : null;
     public StateContext Context => agent != null ? agent.Context : null;
 
+    public Rigidbody Rigidbody => agent.Rigidbody;
+    public Animator Animator => agent.Animator;
+
     private Dictionary<EnemyStateID, EnemyRuntimeState> runtimeStates = new();
     private EnemyRuntimeState currentState;
     public EnemyStateID CurrentStateID { get; private set; }

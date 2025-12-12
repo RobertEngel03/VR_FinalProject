@@ -14,10 +14,23 @@ public class TargetDetectedEvent
     /// <summary>
     /// Creates a new TargetDetectedEvent with the detected transform.
     /// </summary>
-    public TargetDetectedEvent(Agent source, Transform target, bool canAttack)
+    public TargetDetectedEvent(Agent source, Transform target, bool inRange)
     {
         SourceAgent = source;
         Target = target;
-        CanAttack = canAttack;
+
+        var attackReady = source.Get<WeaponManager>().ready;
+
+        CanAttack = inRange && attackReady;
+    }
+}
+
+public class DeathEvent
+{
+    public Agent DeadAgent { get; }
+
+    public DeathEvent(Agent deadAgent)
+    {
+        DeadAgent = deadAgent;
     }
 }

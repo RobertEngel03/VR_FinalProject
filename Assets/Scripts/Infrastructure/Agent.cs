@@ -1,17 +1,54 @@
 using UnityEngine;
 using System;
 
+public class DamageContext
+{
+    public Agent Source;
+    public float Damage;
+    public float KnockbackForce;
+
+    public DamageContext(Agent source, float damage, float knockbackForce)
+    {
+        Source = source;
+        Damage = damage;
+        KnockbackForce = knockbackForce;
+    }
+}
+
+public interface IDamageable
+{
+    public float Health { get; set; }
+
+    public void DealDamage(DamageContext context);
+}
+
 /// <summary>
 /// Base class for all agents (players, enemies, NPCs)
 /// </summary>
 [RequireComponent(typeof(DIContainer))]
-public abstract class Agent : MonoBehaviour
+public abstract class Agent : MonoBehaviour, IDamageable
 {
     [Header("Agent Identity")]
     public string EntityName;
     public Guid EntityId { get; private set; }
 
     public Rigidbody Rigidbody { get; private set; }
+    [field: SerializeField] public Animator Animator { get; private set; }
+
+    // Really we would move this onto an AttributesProcessor class where we do Dictionary<Attribute, value>
+    [SerializeField] private float _health = 100f;
+    public float Health
+    {
+        get => _health;
+        set
+        {
+            _health = value;
+            if (_health <= 0)
+            {
+                EventBus.Instance.Publish(new DeathEvent(this));
+            }
+        }
+    }
 
     protected DIContainer container;
 
@@ -26,6 +63,7 @@ public abstract class Agent : MonoBehaviour
         }
 
         Rigidbody = GetComponent<Rigidbody>();
+        Animator = GetComponent<Animator>();
 
         InitializeAgent();
     }
@@ -60,5 +98,11 @@ public abstract class Agent : MonoBehaviour
         }
 
         return container.Get<T>();
+    }
+
+    public void DealDamage(DamageContext context)
+    {
+        Debug.Log($"{context.Source.EntityName} hit {EntityName} for {context.Damage} damage");
+        Health -= context.Damage;
     }
 }

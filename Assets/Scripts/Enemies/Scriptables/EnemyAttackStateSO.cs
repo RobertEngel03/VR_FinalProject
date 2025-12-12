@@ -8,9 +8,9 @@ public class EnemyAttackStateSO : EnemyStateSO
 
     public override Type RuntimeType => typeof(EnemyAttackState);
 
-    public float AttackDistance;
     public float Damage;
-    public float WindupTime;
+    public float KnockbackForce;
+    public float AttackDuration;
 
     public override EnemyRuntimeState CreateRuntime(EnemyFSM stateMachine)
     {

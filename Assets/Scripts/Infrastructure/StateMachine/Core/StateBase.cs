@@ -1,5 +1,4 @@
-﻿
-/// <summary>
+﻿/// <summary>
 /// Abstract base class for all runtime states
 /// </summary>
 public abstract class StateBase

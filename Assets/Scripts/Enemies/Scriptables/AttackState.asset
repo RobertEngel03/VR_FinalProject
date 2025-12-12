@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45908ec89cf3b5347b500b9fff1af5a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b7cb91500ba64c4985395a3e0f82896, type: 3}
   m_Name: AttackState
   m_EditorClassIdentifier: 
   OverrideAnimationClip: {fileID: 0}
-  AttackDistance: 2
   Damage: 5
-  WindupTime: 0.5
+  KnockbackForce: 0
+  AttackDuration: 1

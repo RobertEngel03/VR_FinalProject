@@ -15,3 +15,4 @@ MonoBehaviour:
   OverrideAnimationClip: {fileID: 0}
   AttackDistance: 2
   Damage: 5
+  WindupTime: 0.5

@@ -10,6 +10,7 @@ public class EnemyAttackStateSO : EnemyStateSO
 
     public float AttackDistance;
     public float Damage;
+    public float WindupTime;
 
     public override EnemyRuntimeState CreateRuntime(EnemyFSM stateMachine)
     {

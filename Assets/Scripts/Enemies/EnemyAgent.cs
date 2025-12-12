@@ -9,7 +9,7 @@ public class EnemyAgent : Agent
 
     [field: SerializeField] public EnemyStateMachineConfig AgentConfig { get; private set; }
 
-    private StateContext context;
+    public StateContext Context { get; private set; }   
 
     public override void InitializeAgent()
     {
@@ -20,7 +20,13 @@ public class EnemyAgent : Agent
         }
 
         // Setup context
-        context = new StateContext(this);
+        Context = new StateContext(this);
+
+        // Subscriptions
+        EventBus.Instance.Subscribe<TargetDetectedEvent>(
+                evt => _ = evt.SourceAgent == this,
+                HandleTargetDetected
+            );
 
         CreateFSM();
     }
@@ -28,7 +34,7 @@ public class EnemyAgent : Agent
     private void CreateFSM()
     {
         _stateMachine = gameObject.AddComponent<EnemyFSM>();
-        _stateMachine.Initialize(this, context);
+        _stateMachine.Initialize(this);
     }
 
     public override void Update()
@@ -44,9 +50,14 @@ public class EnemyAgent : Agent
         base.FixedUpdate();
     }
 
+    private void HandleTargetDetected(TargetDetectedEvent evt)
+    {
+        _stateMachine.HandleTargetDetected(evt);
+    }
+
     // FOR DEBUGGING
-    public void Idle() => _stateMachine.ChangeState(EnemyStateID.Idle, context);
-    public void Patrol() => _stateMachine.ChangeState(EnemyStateID.Patrol, context);
-    public void Chase() => _stateMachine.ChangeState(EnemyStateID.Chase, context);
-    public void Attack() => _stateMachine.ChangeState(EnemyStateID.Attack, context);
+    public void Idle() => _stateMachine.ChangeState(EnemyStateID.Idle, Context);
+    public void Patrol() => _stateMachine.ChangeState(EnemyStateID.Patrol, Context);
+    public void Chase() => _stateMachine.ChangeState(EnemyStateID.Chase, Context);
+    public void Attack() => _stateMachine.ChangeState(EnemyStateID.Attack, Context);
 }

@@ -1,18 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class GameEvents : MonoBehaviour
+public class TargetDetectedEvent
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Agent SourceAgent { get; }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// The detected target transform.
+    /// </summary>
+    public Transform Target { get; }
+    
+    public bool CanAttack { get; }
+
+    /// <summary>
+    /// Creates a new TargetDetectedEvent with the detected transform.
+    /// </summary>
+    public TargetDetectedEvent(Agent source, Transform target, bool canAttack)
     {
-        
+        SourceAgent = source;
+        Target = target;
+        CanAttack = canAttack;
     }
 }

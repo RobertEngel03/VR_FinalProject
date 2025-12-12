@@ -11,6 +11,8 @@ public abstract class Agent : MonoBehaviour
     public string EntityName;
     public Guid EntityId { get; private set; }
 
+    public Rigidbody Rigidbody { get; private set; }
+
     protected DIContainer container;
 
     protected virtual void Awake()
@@ -22,6 +24,8 @@ public abstract class Agent : MonoBehaviour
         {
             Debug.LogError($"{name} Agent requires a DIContainer component!");
         }
+
+        Rigidbody = GetComponent<Rigidbody>();
 
         InitializeAgent();
     }

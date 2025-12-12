@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc4a9cb7765fc4449c5c6a5cf47f545, type: 3}
   m_Name: ExampleEnemyConfig
   m_EditorClassIdentifier: 
-  defaultState: 0
+  defaultState: 1
   stateMappings:
   - stateID: 0
     stateSO: {fileID: 11400000, guid: 89adc92ef7e5e7b47941902cc47e5da3, type: 2}

@@ -645,6 +645,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityName: 
+  <Animator>k__BackingField: {fileID: 0}
+  _health: 100
   <AgentConfig>k__BackingField: {fileID: 11400000, guid: d34fff9487067ce42805cc0c941a86e0, type: 2}
 --- !u!114 &138014696
 MonoBehaviour:
@@ -886,6 +888,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EntityName: 
+  <Animator>k__BackingField: {fileID: 0}
+  _health: 100
   <AgentConfig>k__BackingField: {fileID: 11400000, guid: d34fff9487067ce42805cc0c941a86e0, type: 2}
 --- !u!114 &593350080
 MonoBehaviour:

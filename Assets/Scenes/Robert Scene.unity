@@ -576,6 +576,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cfbfb95b5f2b90949be0b5faab2775fb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 138014695}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cfbfb95b5f2b90949be0b5faab2775fb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 138014698}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cfbfb95b5f2b90949be0b5faab2775fb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 138014697}
   m_SourcePrefab: {fileID: 100100000, guid: cfbfb95b5f2b90949be0b5faab2775fb, type: 3}
 --- !u!1 &138014692 stripped
 GameObject:
@@ -660,6 +666,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d4574972b3fff44585e7e32449d08b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &138014697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138014692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9d2c2365a351847be732f3dedecafd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponHurtbox: {fileID: 0}
+  GlobalCooldown: 2
+  _timer: 0
+  <ready>k__BackingField: 0
+--- !u!114 &138014698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138014692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c75c01cccd052d4e8242cb350f1a1d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  detectionRange: 5
+  attackRadius: 1
+  currentTarget: {fileID: 0}
 --- !u!1 &142079717
 GameObject:
   m_ObjectHideFlags: 0

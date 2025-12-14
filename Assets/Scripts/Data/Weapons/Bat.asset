@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponName: 
   Damage: 0
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 877997987599535184, guid: b3b8b61cdb4300949b099aedb369f1b5, type: 3}

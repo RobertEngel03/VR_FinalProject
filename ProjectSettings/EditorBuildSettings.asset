@@ -9,5 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Robert Scene.unity
     guid: 718a2cb8625628541943896a7f9126c7
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 2a03f44eb7c678f4fa872d8c512a650d, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1d9fbea12748b334a8c78f944076804d, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 2b546ef260687d04ea98cac2badff1ad, type: 2}

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyHurtbox : MonoBehaviour
+public class Hurtbox : MonoBehaviour
 {
     private new BoxCollider collider;
     private DamageContext _currentContext;
@@ -22,6 +22,8 @@ public class EnemyHurtbox : MonoBehaviour
         Debug.Log($"Hit {other.name}");
         if (other.TryGetComponent<IDamageable>(out var damageable))
         {
+            // TEMPORARY FIX
+            if (_currentContext == null) _currentContext = new DamageContext(null, 5, 0);
             damageable.DealDamage(_currentContext);
         }
     }

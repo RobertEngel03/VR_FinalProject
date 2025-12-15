@@ -21,9 +21,13 @@ public class EnemyAttackStateSO : EnemyStateSO
 
 public class EnemyDeathState : EnemyRuntimeState
 {
+    public EnemyDeathState(EnemyStateSO stateSO, EnemyFSM stateMachine) : base(stateSO, stateMachine)
+    {
+    }
+
     public override void Enter(StateContext context)
     {
         base.Enter(context);
-        Destroy (stateMachine.gameObject);
+        GameObject.Destroy(stateMachine.gameObject);
     }
 }

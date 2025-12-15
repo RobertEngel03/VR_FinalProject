@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4524295378197143529, guid: fa7d1468e561f864fa58c63cbaebbab4, type: 3}
+      propertyPath: m_Name
+      value: Handle
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fa7d1468e561f864fa58c63cbaebbab4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -73,6 +77,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: fa7d1468e561f864fa58c63cbaebbab4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4946646937442870614}
+    - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: fa7d1468e561f864fa58c63cbaebbab4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 21714436851067648}
     - targetCorrespondingSourceObject: {fileID: -4524295378197143529, guid: fa7d1468e561f864fa58c63cbaebbab4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4069189756940565092}
@@ -311,6 +318,18 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &21714436851067648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3472036179197149480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c7c3507dd986cf4da2c04471f40cf63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7874627743156460909 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5888870333102930612, guid: fa7d1468e561f864fa58c63cbaebbab4, type: 3}

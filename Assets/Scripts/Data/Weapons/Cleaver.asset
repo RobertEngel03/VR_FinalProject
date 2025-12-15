@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Cleaver
   m_EditorClassIdentifier: 
   WeaponName: 
-  Damage: 0
+  Damage: 5
   Prefab: {fileID: 5703446232210618654, guid: dad0a9f333cbce74284e029d0eb2e109, type: 3}

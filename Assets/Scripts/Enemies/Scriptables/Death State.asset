@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a553bc9613987e04aafb322168f95d63, type: 3}
-  m_Name: Bat
+  m_Script: {fileID: 11500000, guid: 998d2f0dfc3f2cd4095c3c9795ea5bd3, type: 3}
+  m_Name: Death State
   m_EditorClassIdentifier: 
-  WeaponName: 
-  Damage: 5
-  Prefab: {fileID: 877997987599535184, guid: b3b8b61cdb4300949b099aedb369f1b5, type: 3}
+  OverrideAnimationClip: {fileID: 0}

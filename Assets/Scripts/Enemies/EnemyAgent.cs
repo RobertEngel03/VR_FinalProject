@@ -28,6 +28,11 @@ public class EnemyAgent : Agent
                 HandleTargetDetected
             );
 
+        EventBus.Instance.Subscribe<DeathEvent>(
+                evt => _ = evt.DeadAgent == this,
+                HandleDeath
+            );
+
         CreateFSM();
     }
 
@@ -52,12 +57,16 @@ public class EnemyAgent : Agent
 
     private void HandleTargetDetected(TargetDetectedEvent evt)
     {
-        _stateMachine.HandleTargetDetected(evt);
+        Destroy(gameObject);
+        // _stateMachine.HandleTargetDetected(evt);
     }
+
+    private void HandleDeath(DeathEvent evt) => Die();
 
     // FOR DEBUGGING
     public void Idle() => _stateMachine.ChangeState(EnemyStateID.Idle, Context);
     public void Patrol() => _stateMachine.ChangeState(EnemyStateID.Patrol, Context);
     public void Chase() => _stateMachine.ChangeState(EnemyStateID.Chase, Context);
     public void Attack() => _stateMachine.ChangeState(EnemyStateID.Attack, Context);
+    public void Die() => _stateMachine.ChangeState(EnemyStateID.Dead, Context);
 }

@@ -102,7 +102,7 @@ public abstract class Agent : MonoBehaviour, IDamageable
 
     public void DealDamage(DamageContext context)
     {
-        Debug.Log($"{context.Source.EntityName} hit {EntityName} for {context.Damage} damage");
+        Debug.Log($"{context.Source?.EntityName} hit {EntityName} for {context.Damage} damage");
         Health -= context.Damage;
     }
 }

@@ -7,7 +7,7 @@ public class WeaponManager : MonoBehaviour
 
     private EnemyAttackState _currentAttack;
 
-    public EnemyHurtbox WeaponHurtbox;
+    public Hurtbox WeaponHurtbox;
 
     public float GlobalCooldown = 2f;
     [SerializeField] private float _timer;

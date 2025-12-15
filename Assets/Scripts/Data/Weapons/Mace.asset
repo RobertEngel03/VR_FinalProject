@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Mace
   m_EditorClassIdentifier: 
   WeaponName: 
-  Damage: 0
+  Damage: 5
   Prefab: {fileID: 5747449482710739004, guid: 42d8e0dc3cfb8014fb48df3391ab4d8e, type: 3}

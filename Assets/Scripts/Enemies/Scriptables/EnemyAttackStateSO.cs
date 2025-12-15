@@ -3,6 +3,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewState", menuName = "Scriptables/FSM/Enemy/AttackState")]
 public class EnemyAttackStateSO : EnemyStateSO
+
 {
     public override EnemyStateID StateID => EnemyStateID.Attack;
 
@@ -15,5 +16,14 @@ public class EnemyAttackStateSO : EnemyStateSO
     public override EnemyRuntimeState CreateRuntime(EnemyFSM stateMachine)
     {
         return new EnemyAttackState(this, stateMachine);
+    }
+}
+
+public class EnemyDeathState : EnemyRuntimeState
+{
+    public override void Enter(StateContext context)
+    {
+        base.Enter(context);
+        Destroy (stateMachine.gameObject);
     }
 }
